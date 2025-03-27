@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BannersController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -28,5 +29,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/{id}/edit', [ProductController::class, 'edit'])->name('edit');
         Route::put('/{id}/update', [ProductController::class, 'update'])->name('update');
         Route::delete('/{id}/destroy', [ProductController::class, 'destroy'])->name('destroy');
+    });
+    Route::prefix('banners')->name('banners.')->group(function () {
+
+        Route::get('/', [BannersController::class, 'index'])->name('index');
+        Route::get('/create', [BannersController::class, 'create'])->name('create');
+        Route::post('/store', [BannersController::class, 'store'])->name('store');
+        Route::get('/{id}/edit', [BannersController::class, 'edit'])->name('edit');
+        Route::put('/{id}/update', [BannersController::class, 'update'])->name('update');
+        Route::delete('/{id}/destroy', [BannersController::class, 'destroy'])->name('destroy');
     });
 });

@@ -13,7 +13,7 @@
         <ul>
             <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
             <li><a href="{{ route('admin.products.index') }}">Sản phẩm</a></li>
-            <li><a href="#">Banner</a></li>
+            <li><a href="{{ route('admin.banners.index') }}">Banner</a></li>
             <li><a href="#">Người dùng</a></li>
             <li><a href="#">Cài đặt</a></li>
         </ul>
