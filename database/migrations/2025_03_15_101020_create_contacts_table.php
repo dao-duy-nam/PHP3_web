@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->string('dien_thoai')->nullable();
-            $table->text('noi_dung');
+            $table->string('ten');          // Tên người liên hệ
+        $table->string('email');         // Email của người liên hệ
+        $table->string('phone')->nullable(); // Số điện thoại (có thể null)
+        $table->text('tin_nhan')->nullable();  
             $table->timestamps();
         });
     }

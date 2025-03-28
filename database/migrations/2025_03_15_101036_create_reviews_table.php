@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->integer('rating');
-            $table->text('danh_gia')->nullable();
-            $table->foreignId('customer_id')->constrained('customers')->onDelete('cascade');
+            $table->string('reviewer_name'); // Tên người đánh giá
+            $table->integer('rating');        // Đánh giá (1-5)
+            $table->text('comment')->nullable(); // Bình luận (có thể null)
+            $table->unsignedBigInteger('post_id'); // ID bài viết      
+            $table->foreign('post_id')->references('id')->on('posts');
             $table->timestamps();
         });
     }

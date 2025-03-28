@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class CustomersSeeder extends Seeder
+class CustomerSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,19 +16,21 @@ class CustomersSeeder extends Seeder
         //
         DB::table('customers')->insert([
             [
-                'name'=>'nam',
-                'email'=>'nam@gmail.com',
-                'so_dien_thoai'=>'01929383',
-                'dia_chi'=>'ha nam',
-                'created_at'=>now(),
+                'ten' => 'Hoàng Minh',
+                'email' => 'hoangminh@example.com',
+                'sdt' => '0123456789',
+                'dia_chi' => 'Hà Nội',
+                'created_at' => now(),
+                
             ],
             [
-                'name'=>'nam',
-                'email'=>'nam1@gmail.com',
-                'so_dien_thoai'=>'011929383',
-                'dia_chi'=>'ha nam',
-                'created_at'=>now(),
-            ],
-        ]);
+                'ten' => 'Nguyễn Thảo',
+                'email' => 'nguyenthao@example.com',
+                'sdt' => '0987654321',
+                'dia_chi' => 'TP.HCM',
+                'created_at' => now(),
+                
+            ]
+            ]);
     }
 }

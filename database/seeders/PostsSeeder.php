@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class PostsSeeder extends Seeder
+class PostSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,19 +16,20 @@ class PostsSeeder extends Seeder
         //
         DB::table('posts')->insert([
             [
-                'title'=>'Áo khoác nam ',
-                'content'=>'Áo khoác nam mới nhất 2025',
-                'image'=>'abc',
-                
-                'created_at'=>now(),
+            'tieu_de' => 'Bài viết đầu tiên',
+            'bai_viet' => 'Đây là nội dung của bài viết đầu tiên.',
+            'tac_gia' => 'Nguyễn Văn A',
+            'trang_thai' => true,
+            'created_at' => now(),
+           
             ],
             [
-                'title'=>'Áo khoác nam ',
-                'content'=>'Áo khoác nam mới nhất 2025',
-                'image'=>'abc',
-                
-                'created_at'=>now(),
-            ],
-        ]);
+        'tieu_de' => 'Bài viết thứ hai',
+            'bai_viet' => 'Đây là nội dung của bài viết thứ hai.',
+            'tac_gia' => 'Trần Thị B',
+            'trang_thai' => true,
+            'created_at' => now(),
+            ]
+            ]);
     }
 }

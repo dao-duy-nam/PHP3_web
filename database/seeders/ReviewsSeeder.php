@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class ReviewsSeeder extends Seeder
+class ReviewSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,17 +16,19 @@ class ReviewsSeeder extends Seeder
         //
         DB::table('reviews')->insert([
             [
-                'rating'=>1,
-                'danh_gia'=>'Áo khoác nam',
-                'customer_id'=>1,
-                'created_at'=>now(),
+            'reviewer_name' => 'Nguyễn Văn C',
+            'rating' => 5,
+            'comment' => 'Bài viết rất hay và hữu ích!',
+            'post_id' => 1, // Giả sử bài viết có ID = 1
+            'created_at' => now(),
             ],
             [
-                'rating'=>2,
-                'danh_gia'=>'Áo khoác nam',
-                'customer_id'=>2,
-                'created_at'=>now(),
-            ],
-        ]);
+                'reviewer_name' => 'Trần Thị D',
+            'rating' => 4,
+            'comment' => 'Nội dung bài viết tốt nhưng cần bổ sung thêm thông tin.',
+            'post_id' => 2, // Giả sử bài viết có ID = 2
+            'created_at' => now(),
+            ]
+            ]);
     }
 }

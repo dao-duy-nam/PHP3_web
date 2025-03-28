@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('content');
-            $table->string('image')->nullable();
+            $table->string('tieu_de');         // Tiêu đề bài viết
+        $table->text('bai_viet');         // Nội dung bài viết
+        $table->string('tac_gia');   // Tên tác giả
+        $table->boolean('trang_thai')->default(true);
             $table->timestamps();
         });
     }
