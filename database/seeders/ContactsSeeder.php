@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class ContactSeeder extends Seeder
+class ContactsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -21,14 +21,14 @@ class ContactSeeder extends Seeder
                 'phone' => '0987654321',
                 'tin_nhan' => 'Tôi quan tâm đến sản phẩm của bạn.',
                 'created_at' => now(),
-            ],
-            [
-                'ten' => 'Phạm Thị F',
+                ],
+                [
+                    'ten' => 'Phạm Thị F',
                 'email' => 'phamthif@example.com',
                 'phone' => null,
                 'tin_nhan' => 'Vui lòng gửi thêm thông tin chi tiết.',
                 'created_at' => now(),
-            ]
+                ]
         ]);
     }
 }
