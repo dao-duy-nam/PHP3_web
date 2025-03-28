@@ -11,9 +11,10 @@ class Reviews extends Model
     use HasFactory,SoftDeletes;
     protected $table = 'reviews';
     protected $fillable = [
+        'reviewer_name',
         'rating',
-        'danh_gia',
-        'customer_id'
+        'comment',
+        'post_id',
     ];
     protected $date = ['deleted_at'];
 }

@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model
 {
     // để sd đc facories tạo dữ liệu mẫu ta cần phải sd thư viện 
-    use HasFactory;
+    use HasFactory,SoftDeletes;
     // quy định model này thao tac với bảng nào
     protected $table = 'categories';
     // các trường trong bảng đều phải đưa vào fillable
