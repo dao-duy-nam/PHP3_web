@@ -19,14 +19,14 @@ class PostsSeeder extends Seeder
                 'title'=>'Áo khoác nam ',
                 'content'=>'Áo khoác nam mới nhất 2025',
                 'image'=>'abc',
-                'author_id'=>1,
+                
                 'created_at'=>now(),
             ],
             [
                 'title'=>'Áo khoác nam ',
                 'content'=>'Áo khoác nam mới nhất 2025',
                 'image'=>'abc',
-                'author_id'=>2,
+                
                 'created_at'=>now(),
             ],
         ]);

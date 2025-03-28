@@ -14,7 +14,6 @@ class Posts extends Model
         'title',
         'content',
         'image',
-        'author_id'
     ];
     protected $date = ['deleted_at'];
 }
