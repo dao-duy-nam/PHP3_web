@@ -29,6 +29,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/{id}/edit', [ProductController::class, 'edit'])->name('edit');
         Route::put('/{id}/update', [ProductController::class, 'update'])->name('update');
         Route::delete('/{id}/destroy', [ProductController::class, 'destroy'])->name('destroy');
+        Route::get('/deleted', [ProductController::class, 'deleted'])->name('deleted');
+        Route::post('/{id}/restore', [ProductController::class, 'restore'])->name('restore');        
     });
     Route::prefix('banners')->name('banners.')->group(function () {
 
@@ -38,5 +40,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/{id}/edit', [BannersController::class, 'edit'])->name('edit');
         Route::put('/{id}/update', [BannersController::class, 'update'])->name('update');
         Route::delete('/{id}/destroy', [BannersController::class, 'destroy'])->name('destroy');
+
     });
 });

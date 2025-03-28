@@ -90,8 +90,7 @@
         {{ session('success') }}
     </div>
 @endif
-    <a href="{{route('admin.products.create')}}" class="btn btn-primary">Create</a>
-    <a href="{{route('admin.products.deleted')}}" class="btn btn-danger">Thùng rác</a>
+    
     <table border="1" width="100%" cellpadding="10" cellspacing="0">
         <thead>
             <tr>
@@ -109,7 +108,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($products as $key => $product)
+            @foreach ($deletedProducts  as $key => $product)
                 <tr>
                     <td>{{ $product->ma_san_pham }}</td>
                     <td>{{ $product->ten_san_pham }}</td>
@@ -123,17 +122,15 @@
                     <td>{{ $product->ngay_nhap }}</td>
                     <td>{{ $product->trang_thai == 1?'còn hàng':'hết hàng' }}</td>
                     <td>
-                        <a href="{{ route('admin.products.show', $product->id) }}" class="btn btn-primary">Show</a>
-                        <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-primary">Edit</a>
-                        {{-- <a href="{{ route('admin.products.destroy', $product->id) }}" class="btn btn-primary">Delete</a> --}}
-                        <form action="{{route('admin.products.destroy', $product->id)}}" method="POST"
-                            onsubmit="return confirm('bạn muốn xóa ko')" class="d-inline"
-                            >
-                        @csrf
-                        @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
-
-                        </form>
+                       
+                        <form action="{{ route('admin.products.restore', ['id' => $product->id]) }}" method="POST"
+                            onsubmit="return confirm('Bạn có muốn khôi phục không?')" class="d-inline">
+                          @csrf
+                          <button type="submit" class="btn btn-success btn-sm">Khôi phục</button>
+                      </form>
+                      
+                      
+                      
                     </td>
                 </tr>
             @endforeach
@@ -142,6 +139,6 @@
 
     <!-- Phân trang -->
     <div class="d-flex justify-content-end mt-3">
-        {{ $products->links('pagination::bootstrap-5') }}
+        {{ $deletedProducts->links('pagination::bootstrap-5') }}
     </div>
 @endsection

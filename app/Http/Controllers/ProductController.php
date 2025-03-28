@@ -89,62 +89,80 @@ class ProductController extends Controller
 
         //validate
         $dataValidate = $request->validate([
-            'ma_san_pham' =>'required|string|max:20|unique:products,ma_san_pham',
-            'ten_san_pham'=>'required|string|max:255',
-            'category_id'=>'required|exists:categories,id',
-            'hinh_anh'=>'nullable|image|mimes:jpg,png,jpeg,gif',
-            'gia'=>'required|numeric|min:0|max:9999999',
-            'gia_khuyen_mai'=>'nullable|numeric|min:0|lt:gia',
-            'so_luong'=>'required|integer|min:1',
-            'ngay_nhap'=>'required|date',
-            'mo_ta'=>'nullable|string',
-            'trang_thai'=>'required|boolean',
+            'ma_san_pham' => 'required|string|max:20|unique:products,ma_san_pham',
+            'ten_san_pham' => 'required|string|max:255',
+            'category_id' => 'required|exists:categories,id',
+            'hinh_anh' => 'nullable|image|mimes:jpg,png,jpeg,gif',
+            'gia' => 'required|numeric|min:0|max:9999999',
+            'gia_khuyen_mai' => 'nullable|numeric|min:0|lt:gia',
+            'so_luong' => 'required|integer|min:1',
+            'ngay_nhap' => 'required|date',
+            'mo_ta' => 'nullable|string',
+            'trang_thai' => 'required|boolean',
         ]);
-         //xử lý hình ảnh
-        if($request->hasFile('hinh_anh')){
-            $imagePath=$request->file('hinh_anh')->store('images/products','public');
-            $dataValidate['hinh_anh']=$imagePath;
+        //xử lý hình ảnh
+        if ($request->hasFile('hinh_anh')) {
+            $imagePath = $request->file('hinh_anh')->store('images/products', 'public');
+            $dataValidate['hinh_anh'] = $imagePath;
         }
         Products::create($dataValidate);
-        return redirect()->route('admin.products.index')->with('success','thêm sản phẩm thành công!');
+        return redirect()->route('admin.products.index')->with('success', 'thêm sản phẩm thành công!');
     }
-    public function edit($id){
+    public function edit($id)
+    {
         $product = Products::findOrFail($id);
         $categories = Category::all();
-        return view('admin.products.edit', compact('product','categories'));
+        return view('admin.products.edit', compact('product', 'categories'));
     }
-    public function update(Request $request,$id){
+    public function update(Request $request, $id)
+    {
         $product = Products::findOrFail($id);
 
         $dataValidate = $request->validate([
-            'ma_san_pham' =>'required|string|max:20|unique:products,ma_san_pham,'.$id,
-            'ten_san_pham'=>'required|string|max:255',
-            'category_id'=>'required|exists:categories,id',
-            'hinh_anh'=>'nullable|image|mimes:jpg,png,jpeg,gif',
-            'gia'=>'required|numeric|min:0|max:9999999',
-            'gia_khuyen_mai'=>'nullable|numeric|min:0|lt:gia',
-            'so_luong'=>'required|integer|min:1',
-            'ngay_nhap'=>'required|date',
-            'mo_ta'=>'nullable|string',
-            'trang_thai'=>'required|boolean',
+            'ma_san_pham' => 'required|string|max:20|unique:products,ma_san_pham,' . $id,
+            'ten_san_pham' => 'required|string|max:255',
+            'category_id' => 'required|exists:categories,id',
+            'hinh_anh' => 'nullable|image|mimes:jpg,png,jpeg,gif',
+            'gia' => 'required|numeric|min:0|max:9999999',
+            'gia_khuyen_mai' => 'nullable|numeric|min:0|lt:gia',
+            'so_luong' => 'required|integer|min:1',
+            'ngay_nhap' => 'required|date',
+            'mo_ta' => 'nullable|string',
+            'trang_thai' => 'required|boolean',
         ]);
-         //xử lý hình ảnh
-        if($request->hasFile('hinh_anh')){
-            $imagePath=$request->file('hinh_anh')->store('images/products','public');
-            $dataValidate['hinh_anh']=$imagePath;
-            if($product->hinh_anh){
+        //xử lý hình ảnh
+        if ($request->hasFile('hinh_anh')) {
+            $imagePath = $request->file('hinh_anh')->store('images/products', 'public');
+            $dataValidate['hinh_anh'] = $imagePath;
+            if ($product->hinh_anh) {
                 Storage::disk('public')->delete($product->hinh_anh);
             }
         }
         $product->update($dataValidate);
-        return redirect()->route('admin.products.index')->with('success','sửa sản phẩm thành công!');
+        return redirect()->route('admin.products.index')->with('success', 'sửa sản phẩm thành công!');
     }
-    public function destroy($id){
+    public function destroy($id)
+    {
         $product = Products::findOrFail($id);
-        if($product->hinh_anh){
+        if ($product->hinh_anh) {
             Storage::disk('public')->delete($product->hinh_anh);
         }
         $product->delete();
-        return redirect()->route('admin.products.index')->with('success','xóa sản phẩm thành công!');
+        return redirect()->route('admin.products.index')->with('success', 'xóa sản phẩm thành công!');
+    }
+    public function deleted()
+    {
+        $deletedProducts = Products::onlyTrashed()->paginate(10);
+        $categories = Category::all();
+
+        return view('admin.products.restore', compact('deletedProducts', 'categories'));
+    }
+
+    public function restore($id)
+    {
+        $product = Products::onlyTrashed()->findOrFail($id); // Chỉ lấy sản phẩm đã bị xóa mềm
+        $product->restore(); // Khôi phục sản phẩm
+
+        return redirect()->route('admin.products.index')->with('success', 'Khôi phục sản phẩm thành công!');
     }
 }
