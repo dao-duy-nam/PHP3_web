@@ -7,106 +7,42 @@
             <h5><i class="fas fa-plus"></i> Thêm Sản Phẩm</h5>
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.customers.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
-                <!-- Tên sản phẩm -->
                 <div class="mb-3">
-                    <label for="ten_san_pham" class="form-label">Tên sản phẩm</label>
-                    <input type="text" id="ten_san_pham" value="{{ old('ten_san_pham') }}" name="ten_san_pham" class="form-control @error('ten_san_pham') is-invalid @enderror">
-                    @error('ten_san_pham')
+                    <label for="ten" class="form-label">Tên</label>
+                    <input type="text" id="ten" value="" name="ten" class="form-control @error('ten') is-invalid @enderror">
+                    @error('ten')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
 
                 <!-- Mã sản phẩm -->
                 <div class="mb-3">
-                    <label for="ma_san_pham" class="form-label">Mã sản phẩm</label>
-                    <input type="text" id="ma_san_pham" value="{{ old('ma_san_pham') }}" name="ma_san_pham"
-                        class="form-control @error('ma_san_pham') is-invalid @enderror">
-                    @error('ma_san_pham')
+                    <label for="email" class="form-label">email</label>
+                    <input type="text" id="email" value="" name="email"
+                        class="form-control @error('email') is-invalid @enderror">
+                    @error('email')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
                 {{-- hiển thị lỗi ở các ô tiếp --}}
                 <div class="mb-3">
-                    <label for="ngay_nhap" class="form-label @error('ngay_nhap') is-invalid @enderror">Ngày nhập</label>
-                    <input type="date" id="ngay_nhap" value="{{ old('ngay_nhap') }}" name="ngay_nhap" class="form-control">
-                    @error('ngay_nhap')
+                    <label for="sdt" class="form-label @error('sdt') is-invalid @enderror">số điện thoại</label>
+                    <input type="number" id="sdt" value="" name="sdt" class="form-control">
+                    @error('sdt')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
-                <!-- Danh mục -->
                 <div class="mb-3">
-                    <label for="category_id" class="form-label">Danh mục</label>
-                    <select id="category_id" name="category_id" class="form-select">
-                        {{-- <option value="">Chọn danh mục</option> --}}
-                        @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->ten_danh_muc }}</option>
-                        @endforeach
-                    </select>
-                    @error('category_id')
+                    <label for="dia_chi" class="form-label">dia_chi</label>
+                    <input type="text" id="dia_chi" value="" name="dia_chi"
+                        class="form-control @error('dia_chi') is-invalid @enderror">
+                    @error('dia_chi')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
-
-                <!-- Giá và Giá Khuyến Mại -->
-                <div class="mb-3 row">
-                    <div class="col-md-6">
-                        <label for="gia" class="form-label @error('gia') is-invalid @enderror">Giá</label>
-                        <input type="number" id="gia" value="{{ old('gia') }}" name="gia" class="form-control" min="0">
-                        @error('gia')
-                            <p class="text-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div class="col-md-6">
-                        <label for="gia_khuyen_mai" class="form-label">Giá Khuyến Mại</label>
-                        <input type="number" value="{{ old('gia_khuyen_mai') }}" id="gia_khuyen_mai" name="gia_khuyen_mai" class="form-control" min="0">
-                        @error('gia_khuyen_mai')
-                            <p class="text-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
-                </div>
-
-                <!-- Số lượng -->
-                <div class="mb-3">
-                    <label for="so_luong" class="form-label @error('so_luong') is-invalid @enderror">Số lượng</label>
-                    <input type="number" value="{{ old('so_luong') }}" id="so_luong" name="so_luong" class="form-control" min="1">
-                    @error('so_luong')
-                        <p class="text-danger">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <!-- Mô tả -->
-                <div class="mb-3">
-                    <label for="mo_ta" class="form-label">Mô tả</label>
-                    <textarea id="mo_ta" name="mo_ta" class="form-control" rows="4"></textarea>
-
-                </div>
-
-                <!-- Hình ảnh -->
-                <div class="mb-3">
-                    <label for="hinh_anh" class="form-label">Hình ảnh</label>
-                    <input type="file" id="hinh_anh" name="hinh_anh" class="form-control" accept="image/*">
-                    @error('hinh_anh')
-                        <p class="text-danger">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <!-- Trạng thái -->
-                <div class="mb-3">
-                    <label class="form-label">Trạng thái</label>
-                    <div>
-                        <input type="radio" id="con_hang" name="trang_thai" value="1" checked>
-                        <label for="con_hang">Còn hàng</label>
-                        <input type="radio" id="het_hang" name="trang_thai" value="0">
-                        <label for="het_hang">Hết hàng</label>
-                        @error('trang_thai')
-                            <p class="text-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
-                </div>
-
                 <!-- Nút Submit -->
                 <button type="submit" class="btn btn-success">
                     <i class="fas fa-save"></i> Lưu sản phẩm

@@ -13,9 +13,12 @@
         <ul>
             <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
             <li><a href="{{ route('admin.products.index') }}">Sản phẩm</a></li>
+            <li><a href="{{ route('admin.categories.index') }}">Danh mục</a></li>
             <li><a href="{{ route('admin.banners.index') }}">Banner</a></li>
-            <li><a href="#">Người dùng</a></li>
-            <li><a href="#">Cài đặt</a></li>
+            <li><a href="{{ route('admin.contacts.index') }}">contacts</a></li>
+            <li><a href="{{ route('admin.customers.index') }}">customers</a></li>
+            <li><a href="{{ route('admin.posts.index') }}">posts</a></li>
+            <li><a href="{{ route('admin.reviews.index') }}">reviews</a></li>
         </ul>
     </div>
     

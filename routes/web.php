@@ -56,7 +56,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/{id}/edit', [CategoriesController::class, 'edit'])->name('edit');
         Route::put('/{id}/update', [CategoriesController::class, 'update'])->name('update');
         Route::delete('/{id}/destroy', [CategoriesController::class, 'destroy'])->name('destroy');
-
+        Route::get('/deleted', [CategoriesController::class, 'deleted'])->name('deleted');
+        Route::post('/{id}/restore', [CategoriesController::class, 'restore'])->name('restore');      
     });
     //
     //route quản lý banners
@@ -67,7 +68,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/{id}/edit', [ContactsController::class, 'edit'])->name('edit');
         Route::put('/{id}/update', [ContactsController::class, 'update'])->name('update');
         Route::delete('/{id}/destroy', [ContactsController::class, 'destroy'])->name('destroy');
-
+        Route::get('/deleted', [ContactsController::class, 'deleted'])->name('deleted');
+        Route::post('/{id}/restore', [ContactsController::class, 'restore'])->name('restore');  
     });
     //
     //route quản lý banners
@@ -78,7 +80,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/{id}/edit', [CustomersController::class, 'edit'])->name('edit');
         Route::put('/{id}/update', [CustomersController::class, 'update'])->name('update');
         Route::delete('/{id}/destroy', [CustomersController::class, 'destroy'])->name('destroy');
-
+        Route::get('/deleted', [CustomersController::class, 'deleted'])->name('deleted');
+        Route::post('/{id}/restore', [CustomersController::class, 'restore'])->name('restore');  
     });
     //
     //route quản lý banners
@@ -89,7 +92,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/{id}/edit', [ReviewsController::class, 'edit'])->name('edit');
         Route::put('/{id}/update', [ReviewsController::class, 'update'])->name('update');
         Route::delete('/{id}/destroy', [ReviewsController::class, 'destroy'])->name('destroy');
-
+        Route::get('/deleted', [ReviewsController::class, 'deleted'])->name('deleted');
+        Route::post('/{id}/restore', [ReviewsController::class, 'restore'])->name('restore');  
     });
     //
     //route quản lý banners
@@ -100,6 +104,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/{id}/edit', [PostsController::class, 'edit'])->name('edit');
         Route::put('/{id}/update', [PostsController::class, 'update'])->name('update');
         Route::delete('/{id}/destroy', [PostsController::class, 'destroy'])->name('destroy');
-
+        Route::get('/deleted', [PostsController::class, 'deleted'])->name('deleted');
+        Route::post('/{id}/restore', [PostsController::class, 'restore'])->name('restore');  
     });
 });

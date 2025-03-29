@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Contacts extends Model
 {
     //
-    use HasFactory;
+    use HasFactory,SoftDeletes;
     protected $table = 'contacts';
     protected $fillable = [
         'ten',
@@ -16,4 +17,6 @@ class Contacts extends Model
         'phone',
         'tin_nhan'
     ];
+    protected $date = ['deleted_at'];
+
 }

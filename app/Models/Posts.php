@@ -8,13 +8,22 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Posts extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
+
     protected $table = 'posts';
+
     protected $fillable = [
         'tieu_de',
         'bai_viet',
         'tac_gia',
         'trang_thai',
     ];
-    protected $date = ['deleted_at'];
+
+    protected $dates = ['deleted_at'];
+
+    // Một bài viết có nhiều đánh giá
+    public function reviews()
+    {
+        return $this->hasMany(Reviews::class, 'post_id');
+    }
 }

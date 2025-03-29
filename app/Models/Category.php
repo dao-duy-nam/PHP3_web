@@ -17,6 +17,8 @@ class Category extends Model
         'ten_danh_muc',
         'trang_thai'
     ];
+    protected $date = ['deleted_at'];
+
     // tạo liên hệ với products
     public function products(){
         return $this->hasMany(Products::class,'category_id');

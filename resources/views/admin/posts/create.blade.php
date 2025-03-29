@@ -1,94 +1,41 @@
 @extends('layouts.admin')
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 @section('content')
     <div class="card">
         <div class="card-header bg-primary text-white">
-            <h5><i class="fas fa-plus"></i> Thêm Sản Phẩm</h5>
+            <h5><i class="fas fa-plus"></i> Thêm Bài Viết</h5>
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.posts.store') }}" method="POST">
                 @csrf
 
-                <!-- Tên sản phẩm -->
+                <!-- Tiêu đề -->
                 <div class="mb-3">
-                    <label for="ten_san_pham" class="form-label">Tên sản phẩm</label>
-                    <input type="text" id="ten_san_pham" value="{{ old('ten_san_pham') }}" name="ten_san_pham" class="form-control @error('ten_san_pham') is-invalid @enderror">
-                    @error('ten_san_pham')
+                    <label for="tieu_de" class="form-label">Tiêu đề</label>
+                    <input type="text" id="tieu_de" name="tieu_de"
+                        class="form-control @error('tieu_de') is-invalid @enderror" value="{{ old('tieu_de') }}">
+                    @error('tieu_de')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
 
-                <!-- Mã sản phẩm -->
+                <!-- Bài viết -->
                 <div class="mb-3">
-                    <label for="ma_san_pham" class="form-label">Mã sản phẩm</label>
-                    <input type="text" id="ma_san_pham" value="{{ old('ma_san_pham') }}" name="ma_san_pham"
-                        class="form-control @error('ma_san_pham') is-invalid @enderror">
-                    @error('ma_san_pham')
-                        <p class="text-danger">{{ $message }}</p>
-                    @enderror
-                </div>
-                {{-- hiển thị lỗi ở các ô tiếp --}}
-                <div class="mb-3">
-                    <label for="ngay_nhap" class="form-label @error('ngay_nhap') is-invalid @enderror">Ngày nhập</label>
-                    <input type="date" id="ngay_nhap" value="{{ old('ngay_nhap') }}" name="ngay_nhap" class="form-control">
-                    @error('ngay_nhap')
-                        <p class="text-danger">{{ $message }}</p>
-                    @enderror
-                </div>
-                <!-- Danh mục -->
-                <div class="mb-3">
-                    <label for="category_id" class="form-label">Danh mục</label>
-                    <select id="category_id" name="category_id" class="form-select">
-                        {{-- <option value="">Chọn danh mục</option> --}}
-                        @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->ten_danh_muc }}</option>
-                        @endforeach
-                    </select>
-                    @error('category_id')
+                    <label for="bai_viet" class="form-label">Nội dung bài viết</label>
+                    <textarea id="bai_viet" name="bai_viet" class="form-control @error('bai_viet') is-invalid @enderror" rows="6">{{ old('bai_viet') }}</textarea>
+                    @error('bai_viet')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
 
-                <!-- Giá và Giá Khuyến Mại -->
-                <div class="mb-3 row">
-                    <div class="col-md-6">
-                        <label for="gia" class="form-label @error('gia') is-invalid @enderror">Giá</label>
-                        <input type="number" id="gia" value="{{ old('gia') }}" name="gia" class="form-control" min="0">
-                        @error('gia')
-                            <p class="text-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div class="col-md-6">
-                        <label for="gia_khuyen_mai" class="form-label">Giá Khuyến Mại</label>
-                        <input type="number" value="{{ old('gia_khuyen_mai') }}" id="gia_khuyen_mai" name="gia_khuyen_mai" class="form-control" min="0">
-                        @error('gia_khuyen_mai')
-                            <p class="text-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
-                </div>
-
-                <!-- Số lượng -->
+                <!-- Tác giả -->
                 <div class="mb-3">
-                    <label for="so_luong" class="form-label @error('so_luong') is-invalid @enderror">Số lượng</label>
-                    <input type="number" value="{{ old('so_luong') }}" id="so_luong" name="so_luong" class="form-control" min="1">
-                    @error('so_luong')
-                        <p class="text-danger">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <!-- Mô tả -->
-                <div class="mb-3">
-                    <label for="mo_ta" class="form-label">Mô tả</label>
-                    <textarea id="mo_ta" name="mo_ta" class="form-control" rows="4"></textarea>
-
-                </div>
-
-                <!-- Hình ảnh -->
-                <div class="mb-3">
-                    <label for="hinh_anh" class="form-label">Hình ảnh</label>
-                    <input type="file" id="hinh_anh" name="hinh_anh" class="form-control" accept="image/*">
-                    @error('hinh_anh')
+                    <label for="tac_gia" class="form-label">Tác giả</label>
+                    <input type="text" id="tac_gia" name="tac_gia"
+                        class="form-control @error('tac_gia') is-invalid @enderror" value="{{ old('tac_gia') }}">
+                    @error('tac_gia')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
@@ -97,20 +44,28 @@
                 <div class="mb-3">
                     <label class="form-label">Trạng thái</label>
                     <div>
-                        <input type="radio" id="con_hang" name="trang_thai" value="1" checked>
-                        <label for="con_hang">Còn hàng</label>
-                        <input type="radio" id="het_hang" name="trang_thai" value="0">
-                        <label for="het_hang">Hết hàng</label>
-                        @error('trang_thai')
-                            <p class="text-danger">{{ $message }}</p>
-                        @enderror
+                        <div class="form-check form-check-inline">
+                            <input type="radio" id="hien_thi" name="trang_thai" value="1" class="form-check-input"
+                                {{ old('trang_thai', '1') == '1' ? 'checked' : '' }}>
+                            <label for="hien_thi" class="form-check-label">Hiển thị</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" id="an" name="trang_thai" value="0" class="form-check-input"
+                                {{ old('trang_thai') == '0' ? 'checked' : '' }}>
+                            <label for="an" class="form-check-label">Ẩn</label>
+                        </div>
                     </div>
+                    @error('trang_thai')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <!-- Nút Submit -->
-                <button type="submit" class="btn btn-success">
-                    <i class="fas fa-save"></i> Lưu sản phẩm
-                </button>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-save"></i> Lưu bài viết
+                    </button>
+                </div>
             </form>
         </div>
     </div>

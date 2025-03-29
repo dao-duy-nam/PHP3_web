@@ -19,5 +19,5 @@ php artisan migrate:fresh --seed <=> Vừa reset, migrate và seeder
 php artisan make:model TênModel --tạo model
 php artisan make:factory PostFactory
 
-
+php artisan make:migration add_deleted_at_to_reviews_table --table=reviews  // thêm trường db
 php artisan make:controller TenController

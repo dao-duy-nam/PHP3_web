@@ -16,4 +16,6 @@ class Banners extends Model
         'image',
         'link',
     ];
+    protected $date = ['deleted_at'];
+
 }

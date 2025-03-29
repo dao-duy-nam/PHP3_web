@@ -8,13 +8,23 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Reviews extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
+
     protected $table = 'reviews';
+
     protected $fillable = [
         'reviewer_name',
         'rating',
         'comment',
         'post_id',
     ];
-    protected $date = ['deleted_at'];
+
+    protected $dates = ['deleted_at'];
+
+    // Quan hệ đúng: Một đánh giá thuộc về một bài viết
+    public function post()
+    {
+        return $this->belongsTo(Posts::class, 'post_id');
+    }
 }
+
