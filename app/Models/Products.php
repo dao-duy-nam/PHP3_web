@@ -21,6 +21,7 @@ class Products extends Model
         'so_luong',
         'ngay_nhap',
         'mo_ta',
+        'trang_thai',
     ];
     protected $date = ['deleted_at'];
     // tạo mối liên hệ với danh mục 
