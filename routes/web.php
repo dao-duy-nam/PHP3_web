@@ -19,8 +19,18 @@ Route::get('/', function () {
 //     Route::get('/products', [ProductController::class, 'index'])->name('admin.products.index');
 //     Route::get('/', [ProductController::class, 'indexx'])->name('admin.dashboard');
 // });
+use App\Http\Controllers\AuthController;
 
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::controller(AuthController::class)->group(function () {
+    Route::get('/showlogin',[AuthController::class,'showlogin'])->name('login');
+    Route::get('/showregister', [AuthController::class,'showregister'])->name('register');
+    Route::post('/login', [AuthController::class, 'login'])->name('login-post');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('/register', [AuthController::class, 'register']);
+});
+
+
+Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () {
     // các đường dẫn trong admin sẽ đặt trong đây
     Route::get('/', [ProductController::class, 'indexx'])->name('dashboard');
 

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Trang Quản Trị')</title>
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/auth.css') }}"> --}}
 </head>
 <body>
     <!-- Sidebar -->
@@ -26,6 +27,12 @@
     <div class="main-content">
         <header>
             <h1>@yield('title', 'Dashboard')</h1>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-danger">Đăng xuất</button>
+            </form>
+            
+            
         </header>
 
         <main>

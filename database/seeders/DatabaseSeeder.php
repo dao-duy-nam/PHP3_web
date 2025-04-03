@@ -13,21 +13,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        User::factory(10)->create();
 
         // User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        $this->call([
-            //những class seeders tôi muốn chạy
-            // CategorySeeder::class,
-            ProductSeeder::class,
-            BannersSeeder::class,
-            ContactsSeeder::class,
-            CustomersSeeder::class,
-            PostsSeeder::class,
-            ReviewsSeeder::class
-        ]);
+        // $this->call([
+        //     //những class seeders tôi muốn chạy
+        //     // CategorySeeder::class,
+        //     ProductSeeder::class,
+        //     BannersSeeder::class,
+        //     ContactsSeeder::class,
+        //     CustomersSeeder::class,
+        //     PostsSeeder::class,
+        //     ReviewsSeeder::class
+        // ]);
     }
 }
