@@ -7,8 +7,15 @@
         <div class="card-header bg-success text-white text-center">
             <h3>Đăng ký</h3>
         </div>
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+               <li>{{$error}}</li> 
+            @endforeach
+        </div>
+    @endif
         <div class="card-body">
-            <form method="POST" action="">
+            <form method="POST" action="{{route('register-post')}}">
                 @csrf
 
                 <!-- Họ tên -->

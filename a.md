@@ -21,3 +21,5 @@ php artisan make:factory PostFactory
 
 php artisan make:migration add_deleted_at_to_department_table --table=department   // thêm trường db
 php artisan make:controller TenController
+
+php artisan make:middleware AdminMiddleware -- tạo middleware

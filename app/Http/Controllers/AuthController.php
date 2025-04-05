@@ -54,18 +54,19 @@ class AuthController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6|confirmed'
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8|confirmed'
         ]);
 
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password'])
+            'password' => Hash::make($data['password']),
+            'role' => User::ROLE_USER,
         ]);
 
         Auth::login($user);
 
-        return redirect('/')->with('success', 'Đăng ký thành công! Bạn đã được đăng nhập tự động.');
+        return redirect('/admin/products')->with('success', 'Đăng ký thành công! Bạn đã được đăng nhập tự động.');
     }
 }
