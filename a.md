@@ -23,3 +23,4 @@ php artisan make:migration add_deleted_at_to_department_table --table=department
 php artisan make:controller TenController
 
 php artisan make:middleware AdminMiddleware -- tạo middleware
+php artisan route:list -ktra hệ thống xem bao nhiêu route

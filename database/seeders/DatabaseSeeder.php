@@ -19,15 +19,15 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        // $this->call([
-        //     //những class seeders tôi muốn chạy
-        //     // CategorySeeder::class,
-        //     ProductSeeder::class,
-        //     BannersSeeder::class,
-        //     ContactsSeeder::class,
-        //     CustomersSeeder::class,
-        //     PostsSeeder::class,
-        //     ReviewsSeeder::class
-        // ]);
+        $this->call([
+            //những class seeders tôi muốn chạy
+            // CategorySeeder::class,
+            ProductSeeder::class,
+            BannersSeeder::class,
+            ContactsSeeder::class,
+            CustomersSeeder::class,
+            PostsSeeder::class,
+            ReviewsSeeder::class
+        ]);
     }
 }
