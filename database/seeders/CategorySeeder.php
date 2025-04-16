@@ -17,16 +17,25 @@ class CategorySeeder extends Seeder
         //
         // DB::table('categories')->insert([
         //     [
-        //         'ten_danh_muc'=>'áo nam',
+                
+        //         'ten_danh_muc'=>'ao',
         //         'trang_thai'=>true,
         //         'created_at'=>now(),
+
+
         //     ],
         //     [
-        //         'ten_danh_muc'=>'áo nữ',
+                
+        //         'ten_danh_muc'=>'ao2',
+                
         //         'trang_thai'=>true,
         //         'created_at'=>now(),
+
+
         //     ],
+            
         // ]);
-        Category::factory()->count(6)->create();
+
+        Category::factory()->count(5)->create();
     }
 }

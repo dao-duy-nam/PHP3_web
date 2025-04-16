@@ -10,8 +10,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class CategoryFactory extends Factory
 {
-    // quy định factory làm việc với model nào
-    protected $model = Category::class;
+    // quy định factory làm việc với model nào 
+    protected $model= Category::class;
     /**
      * Define the model's default state.
      *
@@ -20,8 +20,7 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            //
-            'ten_danh_muc' =>$this->faker->word,
+            'ten_danh_muc'=>$this->faker->word,
             'trang_thai'=>$this->faker->boolean
         ];
     }

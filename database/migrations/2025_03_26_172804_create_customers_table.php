@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('ten');
-            $table->string('email')->unique();
-            $table->string('sdt')->nullable();
-            $table->string('dia_chi')->nullable();
-            $table->timestamps();
+            $table->string('name'); // Tên khách hàng
+            $table->string('email')->unique(); // Email, duy nhất
+            $table->string('phone')->nullable(); // Số điện thoại
+            $table->text('address')->nullable(); // Địa chỉ
+            $table->timestamps(); // Thời gian tạo và cập nhật
         });
     }
 

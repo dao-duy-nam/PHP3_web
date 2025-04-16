@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('reviews', function (Blueprint $table) {
-            $table->softDeletes(); // Thêm cột deleted_at
-
+            $table->text('comment')->nullable()->after('rating');
         });
     }
 
@@ -23,8 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('reviews', function (Blueprint $table) {
-            $table->dropSoftDeletes(); // Xóa cột deleted_at nếu rollback
-
+            $table->dropColumn('comment');
         });
     }
 };

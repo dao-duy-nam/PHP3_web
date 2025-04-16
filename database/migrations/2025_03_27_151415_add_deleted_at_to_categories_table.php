@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('banners', function (Blueprint $table) {
-            $table->softDeletes(); // Thêm cột deleted_at
-
+        Schema::table('categories', function (Blueprint $table) {
+            $table->softDeletes();
         });
     }
 
@@ -22,9 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('banners', function (Blueprint $table) {
-            $table->dropSoftDeletes(); // Xóa cột deleted_at nếu rollback
-
+        Schema::table('categories', function (Blueprint $table) {
+            $table->dropSoftDeletes();
         });
     }
 };

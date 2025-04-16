@@ -12,10 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            //thêm trường vào bảng đã có
-            $table->unsignedBigInteger('category_id')->after('ten_san_pham')->nullable();
-            //tạo liên kết
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->softDeletes();
         });
     }
 
@@ -25,9 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            //
-            $table->dropForeign(['category_id']);
-            $table->dropColumn('category_id');
+            $table->dropSoftDeletes();
         });
     }
 };

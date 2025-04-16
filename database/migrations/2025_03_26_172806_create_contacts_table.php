@@ -12,12 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('contacts', function (Blueprint $table) {
-            $table->id();
-            $table->string('ten');          // Tên người liên hệ
-        $table->string('email');         // Email của người liên hệ
-        $table->string('phone')->nullable(); // Số điện thoại (có thể null)
-        $table->text('tin_nhan')->nullable();  
-            $table->timestamps();
+            $table->id(); // Mã định danh duy nhất
+            $table->string('name'); // Tên người liên hệ
+            $table->string('gioi_tinh'); // Giới tính
+            $table->string('email'); // 
+            $table->timestamps(); // Thời gian tạo và cập nhật
         });
     }
 
